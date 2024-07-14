@@ -1,0 +1,120 @@
+mysql> select * from student;
+Empty set (0.00 sec)
+
+mysql> insert into student values ("nandiswar",1,22,"hindupur");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values ("nandi",2,40,"anatapur");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into student values ("anji",3,26,"kurnool");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values ("raj",4,20,"kadiri");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values ("manohar",5,20,"karimnagar");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-----------+------+------+------------+
+| name      | id   | age  | city       |
++-----------+------+------+------------+
+| nandiswar |    1 |   22 | hindupur   |
+| nandi     |    2 |   40 | anatapur   |
+| anji      |    3 |   26 | kurnool    |
+| raj       |    4 |   20 | kadiri     |
+| manohar   |    5 |   20 | karimnagar |
++-----------+------+------+------------+
+5 rows in set (0.01 sec)
+
+mysql> insert into student values ("nandish",6,25,"hindupur");)
+Query OK, 1 row affected (0.02 sec)
+
+    ->
+    ->
+    ->
+    -> ^C
+mysql> select * from student;
++-----------+------+------+------------+
+| name      | id   | age  | city       |
++-----------+------+------+------------+
+| nandiswar |    1 |   22 | hindupur   |
+| nandi     |    2 |   40 | anatapur   |
+| anji      |    3 |   26 | kurnool    |
+| raj       |    4 |   20 | kadiri     |
+| manohar   |    5 |   20 | karimnagar |
+| nandish   |    6 |   25 | hindupur   |
++-----------+------+------+------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into student values ("kumar",7,25,"anatapur");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values ("kalyan",7,25,"anatapur");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values ("narendra",8,25,"kuppam");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-----------+------+------+------------+
+| name      | id   | age  | city       |
++-----------+------+------+------------+
+| nandiswar |    1 |   22 | hindupur   |
+| nandi     |    2 |   40 | anatapur   |
+| anji      |    3 |   26 | kurnool    |
+| raj       |    4 |   20 | kadiri     |
+| manohar   |    5 |   20 | karimnagar |
+| nandish   |    6 |   25 | hindupur   |
+| kumar     |    7 |   25 | anatapur   |
+| kalyan    |    7 |   25 | anatapur   |
+| narendra  |    8 |   25 | kuppam     |
++-----------+------+------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from student where age=25;
++----------+------+------+----------+
+| name     | id   | age  | city     |
++----------+------+------+----------+
+| nandish  |    6 |   25 | hindupur |
+| kumar    |    7 |   25 | anatapur |
+| kalyan   |    7 |   25 | anatapur |
+| narendra |    8 |   25 | kuppam   |
++----------+------+------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student order by age desc limit 1;
++-------+------+------+----------+
+| name  | id   | age  | city     |
++-------+------+------+----------+
+| nandi |    2 |   40 | anatapur |
++-------+------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from student order by age asc limit 1;
++------+------+------+--------+
+| name | id   | age  | city   |
++------+------+------+--------+
+| raj  |    4 |   20 | kadiri |
++------+------+------+--------+
+1 row in set (0.01 sec)
+
+mysql> select city, count(*) from student group by city orderby count(*) des
+c;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'orderby count(*) desc' at line 1
+mysql> select city, count(*) from student group by city order by count(*) de
+sc;
++------------+----------+
+| city       | count(*) |
++------------+----------+
+| anatapur   |        3 |
+| hindupur   |        2 |
+| kurnool    |        1 |
+| kadiri     |        1 |
+| karimnagar |        1 |
+| kuppam     |        1 |
++------------+----------+
+6 rows in set (0.01 sec)
+
+mysql>
